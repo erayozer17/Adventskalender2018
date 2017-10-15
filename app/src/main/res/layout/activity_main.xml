@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@color/colorPrimaryBackground"
+    grid:alignmentMode="alignBounds"
+    grid:columnCount="3"
+    grid:rowCount="7">
+
+    <ImageView
+        android:id="@+id/resim1"
+        android:layout_height="@dimen/iconHeight"
+        android:layout_width="@dimen/iconWidth"
+        grid:layout_columnWeight="1"
+        grid:layout_rowWeight="1"
+        grid:layout_gravity="fill"
+        grid:srcCompat="@drawable/bell"
+        />
+    <ImageView
+        android:id="@+id/resim2"
+        android:layout_height="@dimen/iconHeight"
+        android:layout_width="@dimen/iconWidth"
+        grid:layout_columnWeight="1"
+        grid:layout_rowWeight="1"
+        grid:layout_gravity="fill"
+        grid:srcCompat="@drawable/blackpeter"
+        />
+    <ImageView
+        android:id="@+id/resim3"
+        android:layout_height="@dimen/iconHeight"
+        android:layout_width="@dimen/iconWidth"
+        grid:layout_columnWeight="1"
+        grid:layout_rowWeight="1"
+        grid:layout_gravity="fill"
+        grid:srcCompat="@drawable/candle"
+        />
+    <ImageView
+        android:id="@+id/resim4"
+        android:layout_height="@dimen/iconHeight"
+        android:layout_width="@dimen/iconWidth"
+        grid:layout_columnWeight="1"
+        grid:layout_rowWeight="1"
+        grid:layout_gravity="fill"
+        grid:srcCompat="@drawable/candy"
+        />
+
+    <ImageView
+        android:id="@+id/resim5"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/christmasball" />
+
+    <ImageView
+        android:id="@+id/resim6"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/christmasstar" />
+
+    <ImageView
+        android:id="@+id/resim7"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/christmaswrench" />
+
+    <ImageView
+        android:id="@+id/resim8"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/cookie" />
+
+    <ImageView
+        android:id="@+id/resim9"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/crystalball" />
+
+    <ImageView
+        android:id="@+id/resim10"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/firestove" />
+
+    <ImageView
+        android:id="@+id/resim11"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/mailchristmas" />
+
+    <ImageView
+        android:id="@+id/resim12"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/ribbon" />
+
+    <ImageView
+        android:id="@+id/resim13"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/rocket" />
+
+    <ImageView
+        android:id="@+id/resim14"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/rudolph" />
+
+    <ImageView
+        android:id="@+id/resim15"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/santacart" />
+
+    <ImageView
+        android:id="@+id/resim16"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/santahat" />
+
+    <ImageView
+        android:id="@+id/resim17"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/sinterclaus" />
+
+    <ImageView
+        android:id="@+id/resim18"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/snowflakes" />
+
+    <ImageView
+        android:id="@+id/resim19"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/snowman" />
+
+    <ImageView
+        android:id="@+id/resim20"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/sock" />
+
+    <ImageView
+        android:id="@+id/resim21"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/stick" />
+
+</android.support.v7.widget.GridLayout>
