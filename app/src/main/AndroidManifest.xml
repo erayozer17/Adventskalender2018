@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ozer.eray.adventskalender2018">
+    package="com.ozer.eray.adventskalender2018"
+    android:installLocation="auto">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
@@ -9,12 +14,24 @@
         android:roundIcon="@mipmap/ic_launcher_tree"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="face" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ozer.eray.adventskalender2018.FaceTrackerActivity"
+            android:label="Face Tracker"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
     </application>
 

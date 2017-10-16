@@ -1,5 +1,6 @@
 package com.ozer.eray.adventskalender2018;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     dinle(view);
                     Toast.makeText(MainActivity.this,mesaj,Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(MainActivity.this,FaceTrackerActivity.class);
+                    startActivity(i);
                 }
             });
         }
