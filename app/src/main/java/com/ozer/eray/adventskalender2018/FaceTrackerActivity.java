@@ -205,7 +205,9 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             if (kuralDondur(Calendar.getInstance().get(Calendar.DAY_OF_MONTH),face)){
                 if (sayac == 15){
                     Intent i = new Intent(getBaseContext(),kameraSonrasiActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
+                    finish();
                 }
                 sayac++;
             } else {
