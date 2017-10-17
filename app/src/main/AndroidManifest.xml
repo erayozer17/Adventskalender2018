@@ -29,10 +29,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ozer.eray.adventskalender2018.FaceTrackerActivity"
+            android:name=".FaceTrackerActivity"
             android:label="Face Tracker"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".kameraSonrasiActivity"></activity>
     </application>
 
 </manifest>

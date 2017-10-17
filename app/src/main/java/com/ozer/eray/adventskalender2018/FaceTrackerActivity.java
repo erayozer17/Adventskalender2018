@@ -135,7 +135,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
         if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "Camera permission granted - initialize the camera source");
-            // we have permission, so create the camerasource
             createCameraSource();
             return;
         }
@@ -157,8 +156,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     }
 
     private void startCameraSource() {
-
-        // check that the device has play services available.
         int code = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(
                 getApplicationContext());
         if (code != ConnectionResult.SUCCESS) {
@@ -190,7 +187,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         private FaceGraphic mFaceGraphic;
         private Integer sayac = 0;
         private boolean kuralBool;
-        private Gestures gestures;
 
         GraphicFaceTracker(GraphicOverlay overlay) {
             mOverlay = overlay;
@@ -208,7 +204,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             mFaceGraphic.updateFace(face);
             if (kuralDondur(Calendar.getInstance().get(Calendar.DAY_OF_MONTH),face)){
                 if (sayac == 15){
-                    Intent i = new Intent(getBaseContext(),MainActivity.class);
+                    Intent i = new Intent(getBaseContext(),kameraSonrasiActivity.class);
                     startActivity(i);
                 }
                 sayac++;
@@ -237,28 +233,20 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             boolean solGozunuAc = face.getIsLeftEyeOpenProbability() > 0.5f;
             if (kural == 0){
                 kuralBool = (gul && sagGozunuAc && solGozunuAc);
-                gestures = Gestures.BIR_GUL1_SOL1_SAG1;
             } else if (kural == 1){
                 kuralBool = (gul && sagGozunuAc && solGozunuKapat);
-                gestures = Gestures.ALTI_GUL1_SOL1_SAG0;
             } else if (kural == 2){
                 kuralBool = (gul && sagGozunuKapat && solGozunuAc);
-                gestures = Gestures.YEDI_GUL1_SOL0_SAG1;
             } else if (kural == 3){
                 kuralBool = (gul && sagGozunuKapat && solGozunuKapat);
-                gestures = Gestures.UC_GUL1_SOL0_SAG0;
             } else if (kural == 4){
                 kuralBool = (gulme && sagGozunuAc && solGozunuAc);
-                gestures = Gestures.BES_GUL0_SOL1_SAG1;
             } else if (kural == 5){
                 kuralBool = (gulme && sagGozunuAc && solGozunuKapat);
-                gestures = Gestures.DORT_GUL0_SOL1_SAG0;
             } else if (kural == 6){
                 kuralBool = (gulme && sagGozunuKapat && solGozunuAc);
-                gestures = Gestures.IKI_GUL0_SOL0_SAG1;
             } else {
                 kuralBool = (gulme && sagGozunuKapat && solGozunuKapat);
-                gestures = Gestures.SEKIZ_GUL0_SOL0_SAG0;
             }
             return kuralBool;
         }
