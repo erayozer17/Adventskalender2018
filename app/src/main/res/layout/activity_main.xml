@@ -7,8 +7,8 @@
     android:layout_centerHorizontal="true"
     android:background="@color/colorPrimaryBackground"
     grid:alignmentMode="alignBounds"
-    grid:columnCount="3"
-    grid:rowCount="7">
+    grid:columnCount="4"
+    grid:rowCount="6">
 
     <ImageView
         android:id="@+id/resim1"
@@ -108,7 +108,7 @@
         grid:layout_columnWeight="1"
         grid:layout_gravity="fill"
         grid:layout_rowWeight="1"
-        grid:srcCompat="@drawable/mailchristmas" />
+        grid:srcCompat="@drawable/stick" />
 
     <ImageView
         android:id="@+id/resim12"
@@ -198,6 +198,33 @@
         grid:layout_columnWeight="1"
         grid:layout_gravity="fill"
         grid:layout_rowWeight="1"
-        grid:srcCompat="@drawable/stick" />
+        grid:srcCompat="@drawable/christmastree" />
+
+    <ImageView
+        android:id="@+id/resim22"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/santabag" />
+
+    <ImageView
+        android:id="@+id/resim23"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/mailchristmas" />
+
+    <ImageView
+        android:id="@+id/resim24"
+        android:layout_width="@dimen/iconWidth"
+        android:layout_height="@dimen/iconHeight"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:srcCompat="@drawable/calendarchristmas" />
 
 </android.support.v7.widget.GridLayout>
