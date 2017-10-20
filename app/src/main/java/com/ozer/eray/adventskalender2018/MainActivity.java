@@ -1,16 +1,19 @@
 package com.ozer.eray.adventskalender2018;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-
-import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -26,9 +29,14 @@ public class MainActivity extends AppCompatActivity {
     private String mesaj = null;
     private Integer gun;
     private Calendar calendar = Calendar.getInstance();
-    private static final int HANGI_AY = 9; // TODO: 19.10.2017 tarihleri ayarlamayı unutma ay 11 olacak (sıfırdan başlıyor)
-    private static final int HANGI_YIL = 2017;
+    private JsonHelper jsonHelper;
+    private ImageView[] tuslarYardimci;
+    public static int gunYardimci;
+    private static final int HANGI_AYDA_BASLASIN = 11;
+    private static final int HANGI_YILDA_BASLASIN = 2017;
     private static final int ADVENT_HANGİ_GUN_BASLIYOR = 1;
+    private static final int RC_HANDLE_CAMERA_PERM = 2;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +44,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         calendar.setTime(new Date());
+        jsonHelper = new JsonHelper(getApplicationContext());
         final int hangiGun = calendar.get(Calendar.DAY_OF_MONTH);
         final int ay = calendar.get(Calendar.MONTH);
         final int yil = calendar.get(Calendar.YEAR);
-        if (!isDateValidToShow(hangiGun,ay,yil)){ // TODO: 19.10.2017 bu kontrolü kurmayı unutma
+        if (!isDateValidToShow(hangiGun,ay,yil)){
             zamaniGelmeyenAlert();
+        } else {
+            int rc = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+            if (rc != PackageManager.PERMISSION_GRANTED) {
+                requestCameraPermission();
+            }
         }
         ImageView[] tuslar = {imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,
                 imageView7,imageView8,imageView9,imageView10,imageView11,imageView12,imageView13,
                 imageView14,imageView15,imageView16,imageView17,imageView18,imageView19,
                 imageView20,imageView21,imageView22,imageView23,imageView24};
+        tuslarYardimci = tuslar;
 
         for (ImageView aTuslar : tuslar) {
             aTuslar.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     dinle(view);
                     if (isDateValidToActivateButton(hangiGun,ay,yil)){
                         kuralAlertDialogGoster();
-                        Toast.makeText(getApplicationContext(),mesaj,Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(),"Daha zamanı değil",Toast.LENGTH_SHORT).show();
                     }
@@ -93,142 +107,93 @@ public class MainActivity extends AppCompatActivity {
     public void dinle(View view) {
         switch (view.getId()){
             case R.id.resim1:
-                gun = 1;
-                mesajSetle();
+                setGun(1);
                 break;
             case R.id.resim2:
-                gun = 2;
-                mesajSetle();
+                setGun(2);
                 break;
             case R.id.resim3:
-                gun = 3;
-                mesajSetle();
+                setGun(3);
                 break;
             case R.id.resim4:
-                gun = 4;
-                mesajSetle();
+                setGun(4);
                 break;
             case R.id.resim5:
-                gun = 5;
-                mesajSetle();
+                setGun(5);
                 break;
             case R.id.resim6:
-                gun = 6;
-                mesajSetle();
+                setGun(6);
                 break;
             case R.id.resim7:
-                gun = 7;
-                mesajSetle();
+                setGun(7);
                 break;
             case R.id.resim8:
-                gun = 8;
-                mesajSetle();
+                setGun(8);
                 break;
             case R.id.resim9:
-                gun = 9;
-                mesajSetle();
+                setGun(9);
                 break;
             case R.id.resim10:
-                gun = 10;
-                mesajSetle();
+                setGun(10);
                 break;
             case R.id.resim11:
-                gun = 11;
-                mesajSetle();
+                setGun(11);
                 break;
             case R.id.resim12:
-                gun = 12;
-                mesajSetle();
+                setGun(12);
                 break;
             case R.id.resim13:
-                gun = 13;
-                mesajSetle();
+                setGun(13);
                 break;
             case R.id.resim14:
-                gun = 14;
-                mesajSetle();
+                setGun(14);
                 break;
             case R.id.resim15:
-                gun = 15;
-                mesajSetle();
+                setGun(15);
                 break;
             case R.id.resim16:
-                gun = 16;
-                mesajSetle();
+                setGun(16);
                 break;
             case R.id.resim17:
-                gun = 17;
-                mesajSetle();
+                setGun(17);
                 break;
             case R.id.resim18:
-                gun = 18;
-                mesajSetle();
+                setGun(18);
                 break;
             case R.id.resim19:
-                gun = 19;
-                mesajSetle();
+                setGun(19);
                 break;
             case R.id.resim20:
-                gun = 20;
-                mesajSetle();
+                setGun(20);
                 break;
             case R.id.resim21:
-                gun = 21;
-                mesajSetle();
+                setGun(21);
                 break;
             case R.id.resim22:
-                gun = 22;
-                mesajSetle();
+                setGun(22);
                 break;
             case R.id.resim23:
-                gun = 23;
-                mesajSetle();
+                setGun(23);
                 break;
             case R.id.resim24:
-                gun = 24;
-                mesajSetle();
+                setGun(24);
                 break;
             default:
-                mesaj = "bu default mesaj";
-        }
-    }
-    
-    private void mesajSetle(){
-        mesaj = gettingMesaj(gun);
-    }
-
-    @Nullable
-    private String loadJSONFromAsset(){
-        String json;
-        try {
-            InputStream is = getAssets().open("properties.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            int isRead = is.read(buffer);
-            is.close();
-            json = new String(buffer,"UTF-8");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return json;
-    }
-
-    public String gettingMesaj(int gun){
-        try{
-            JSONObject reader = new JSONObject(loadJSONFromAsset());
-            return reader.getString(Integer.toString(gun));
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
+                try {
+                    throw new Exception();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),"Application crashed",Toast.LENGTH_LONG).show();
+                    finish();
+                }
         }
     }
 
     public void kuralAlertDialogGoster(){
+        Drawable drawable = tuslarYardimci[gun-1].getDrawable();
         SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                 .setTitleText(gun+ " December")
                 .setContentText("Today's Rule: "+gununKuraliniGoster())
-                .setCustomImage(R.drawable.crystalball)
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -238,14 +203,19 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+        if(drawable != null){
+            pDialog.setCustomImage(drawable);
+        } else {
+            pDialog.setCustomImage(R.drawable.crystalball);
+        }
         pDialog.show();
     }
 
     public void zamaniGelmeyenAlert(){
         SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                 .setTitleText("Hallo")
-                .setContentText("Not Ready Yet :)")
-                .setCustomImage(R.drawable.crystalball)
+                .setContentText("It's Not The Time Yet :)")
+                .setCustomImage(R.drawable.christmastree)
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -260,34 +230,85 @@ public class MainActivity extends AppCompatActivity {
         int kural = gun % 8;
         String gununMesajı;
         if (kural == 0){
-            gununMesajı = "İki gözün açık gül";
+            gununMesajı = "Smile, both eyes open";
         } else if (kural == 1){
-            gununMesajı = "Sol göz kapalı sağ göz açık gül";
+            gununMesajı = "Smile, left eye closed, right eye open";
         } else if (kural == 2){
-            gununMesajı = "Sol göz açık sağ göz kapalı gül";
+            gununMesajı = "Smile, left eye open, right eye closed";
         } else if (kural == 3){
-            gununMesajı = "İki gözün kapalı gül";
+            gununMesajı = "Smile, both eyes closed";
         } else if (kural == 4){
-            gununMesajı = "İki gözün açık gülme";
+            gununMesajı = "Don't smile, both eyes open";
         } else if (kural == 5){
-            gununMesajı = "Sol göz kapalı sağ göz açık gülme";
+            gununMesajı = "Don't smile, left eye closed, right eye open";
         } else if (kural == 6){
-            gununMesajı = "Sol göz açık sağ göz kapalı gülme";
+            gununMesajı = "Don't smile, left eye open, right eye closed";
         } else {
-            gununMesajı = "İki gözün kapalı gülme";
+            gununMesajı = "Don't smile, both eyes closed";
         }
         return gununMesajı;
     }
 
     private boolean isDateValidToShow(int hangiGun, int ay, int yil){
-        return ay == HANGI_AY
-                && yil == HANGI_YIL
+        return ay == HANGI_AYDA_BASLASIN
+                && yil == HANGI_YILDA_BASLASIN
                 && hangiGun >= ADVENT_HANGİ_GUN_BASLIYOR;
     }
 
     private boolean isDateValidToActivateButton(int hangiGun, int ay, int yil){
         return hangiGun >= gun
-                && ay == HANGI_AY
-                && yil == HANGI_YIL;
+                && ay == HANGI_AYDA_BASLASIN
+                && yil == HANGI_YILDA_BASLASIN;
+    }
+
+    public Integer getGun() {
+        return gunYardimci;
+    }
+
+    public void setGun(Integer gun) {
+        this.gun = gun;
+        gunYardimci = gun;
+    }
+
+    private void requestCameraPermission() {
+        Log.w(TAG, "Camera permission is not granted. Requesting permission");
+
+        final String[] permissions = new String[]{Manifest.permission.CAMERA};
+
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.CAMERA)) {
+            ActivityCompat.requestPermissions(this, permissions, RC_HANDLE_CAMERA_PERM);
+            return;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode != RC_HANDLE_CAMERA_PERM) {
+            Log.d(TAG, "Got unexpected permission result: " + requestCode);
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            return;
+        }
+
+        if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "Camera permission granted - initialize the camera source");
+            //createCameraSource();
+            return;
+        }
+
+        Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
+                " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
+
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finish();
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Face Tracker sample")
+                .setMessage(R.string.no_camera_permission)
+                .setPositiveButton(R.string.ok, listener)
+                .show();
     }
 }

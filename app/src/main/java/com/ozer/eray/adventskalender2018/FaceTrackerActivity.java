@@ -203,7 +203,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             mOverlay.add(mFaceGraphic);
             mFaceGraphic.updateFace(face);
             if (kuralDondur(Calendar.getInstance().get(Calendar.DAY_OF_MONTH),face)){
-                if (sayac == 40){
+                if (sayac == 45){
                     Intent i = new Intent(getBaseContext(),kameraSonrasiActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
